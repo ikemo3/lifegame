@@ -1,5 +1,8 @@
 package com.ikemo3.lifegame;
 
+import com.ikemo3.lifegame.cell.AliveCell;
+import com.ikemo3.lifegame.cell.Cell;
+import com.ikemo3.lifegame.cell.DeadCell;
 import org.junit.Test;
 
 import java.util.Arrays;

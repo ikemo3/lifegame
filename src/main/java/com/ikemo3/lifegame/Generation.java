@@ -1,6 +1,7 @@
 package com.ikemo3.lifegame;
 
 import com.google.common.collect.Lists;
+import com.ikemo3.lifegame.cell.Cell;
 
 import java.util.ArrayList;
 import java.util.Collections;
