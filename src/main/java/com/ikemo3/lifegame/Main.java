@@ -1,11 +1,14 @@
 package com.ikemo3.lifegame;
 
+import java.util.Arrays;
+import java.util.List;
+
 public final class Main {
-    public static final Cell[] CELLS = {
+    public static final List<Cell> CELLS = Arrays.asList(
             new DeadCell(), new AliveCell(), new DeadCell(),
             new DeadCell(), new AliveCell(), new DeadCell(),
             new DeadCell(), new AliveCell(), new DeadCell()
-    };
+    );
 
     public static void main(String[] args) {
         Generation generation = new Generation(CELLS);

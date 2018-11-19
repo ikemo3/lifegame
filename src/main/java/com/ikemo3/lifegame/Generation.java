@@ -1,6 +1,7 @@
 package com.ikemo3.lifegame;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -9,18 +10,18 @@ public final class Generation {
     private static final int CELL_COUNT = 9;
     private static final int COL_COUNT = 3;
     private static final int ROW_COUNT = 3;
-    private final Cell[] cells;
+    private final List<Cell> cells;
 
-    public Generation(Cell[] cells) {
-        this.cells = cells;
+    public Generation(List<Cell> cells) {
+        this.cells = Collections.unmodifiableList(cells);
     }
 
     public Generation next() {
-        Cell[] nextCells = new Cell[CELL_COUNT];
+        List<Cell> nextCells = new ArrayList<>();
         for (int i = 0; i < CELL_COUNT; i++) {
-            Cell cell = this.cells[i];
+            Cell cell = this.cells.get(i);
             List<Cell> aroundCells = aroundCells(cell);
-            nextCells[i] = this.cells[i].next(aroundCells);
+            nextCells.add(this.cells.get(i).next(aroundCells));
         }
 
         return new Generation(nextCells);
@@ -56,13 +57,13 @@ public final class Generation {
             return null;
         }
 
-        return this.cells[y * 3 + x];
+        return this.cells.get(y * 3 + x);
     }
 
     public int getIndex(Cell cell) {
         for (int i = 0; i < CELL_COUNT; i++) {
             // オブジェクトそのものを比較するので、==を使うのに注意
-            if (this.cells[i] == cell) {
+            if (this.cells.get(i) == cell) {
                 return i;
             }
         }
@@ -84,7 +85,7 @@ public final class Generation {
         StringBuilder builder = new StringBuilder();
         for (int x = 0; x <= 2; x++) {
             for (int y = 0; y <= 2; y++) {
-                Cell cell = this.cells[x * 3 + y];
+                Cell cell = this.cells.get(x * 3 + y);
                 if (cell.isAlive()) {
                     builder.append("■");
                 } else {
