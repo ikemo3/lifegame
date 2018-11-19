@@ -9,7 +9,7 @@ public final class Generation {
     private final Grid grid;
 
     public Generation(List<Cell> cells, int columnSize, int rowSize) {
-        this.grid = new Grid(columnSize, rowSize, cells);
+        this.grid = new SquareGrid(columnSize, rowSize, cells);
     }
 
     public Generation next() {
