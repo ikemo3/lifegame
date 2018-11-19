@@ -63,11 +63,7 @@ public final class Grid implements Iterable<Cell> {
         List<List<Cell>> parted = Lists.partition(this.cells, this.columnSize);
         for (List<Cell> row : parted) {
             for (Cell cell : row) {
-                if (cell.isAlive()) {
-                    builder.append("■");
-                } else {
-                    builder.append("□");
-                }
+                builder.append(cell.toString());
             }
             builder.append('\n');
         }

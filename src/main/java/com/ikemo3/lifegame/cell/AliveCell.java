@@ -2,6 +2,9 @@ package com.ikemo3.lifegame.cell;
 
 import java.util.List;
 
+/**
+ * 生きているセル
+ */
 public final class AliveCell implements Cell {
     @Override
     public Cell next(List<Cell> aroundCell) {
@@ -17,5 +20,10 @@ public final class AliveCell implements Cell {
     @Override
     public boolean isAlive() {
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "■";
     }
 }
