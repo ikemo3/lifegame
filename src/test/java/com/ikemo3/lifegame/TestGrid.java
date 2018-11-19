@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public final class TestGeneration {
+public final class TestGrid {
     private static final List<Cell> CELLS = Arrays.asList(
             new DeadCell(), new AliveCell(), new DeadCell(),
             new AliveCell(), new DeadCell(), new DeadCell(),
@@ -18,11 +18,10 @@ public final class TestGeneration {
     );
 
     @Test
-    public void testNextGeneration() {
-        Generation generation = new Generation(CELLS, 3, 3);
-        Generation nextGeneration = generation.next();
+    public void testAroundCells() {
+        Grid grid = new Grid(3, 3, CELLS);
 
-        assertThat(nextGeneration.isAlive(1, 1)).isTrue();
-        assertThat(nextGeneration.isAlive(2, 0)).isFalse();
+        assertThat(grid.aroundCells(CELLS.get(4)).size()).isEqualTo(8);
+        assertThat(grid.aroundCells(CELLS.get(0)).size()).isEqualTo(3);
     }
 }

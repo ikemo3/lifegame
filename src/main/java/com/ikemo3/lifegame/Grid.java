@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class Grid implements Iterable<Cell> {
@@ -46,6 +47,20 @@ public final class Grid implements Iterable<Cell> {
         int y = index / this.columnSize;
 
         return new Location(x, y);
+    }
+
+    public List<Cell> aroundCells(Cell cell) {
+        Location location = this.getLocation(cell);
+
+        // 周りのセルの位置を取得
+        List<Location> aroundList = location.aroundList();
+
+        // TODO: getX()を使わない
+        return aroundList.stream()
+                .map(around -> this.getCell(around.getX(), around.getY())) // 周りのセルを取得して追加(nullが入る可能性あり)
+                .filter(Optional::isPresent) // nullを除去
+                .map(Optional::get)
+                .collect(Collectors.toList());
     }
 
     @Override
