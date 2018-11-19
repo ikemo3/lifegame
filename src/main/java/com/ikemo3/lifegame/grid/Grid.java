@@ -1,9 +1,7 @@
 package com.ikemo3.lifegame.grid;
 
-import com.ikemo3.lifegame.Location;
 import com.ikemo3.lifegame.cell.Cell;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -18,7 +16,7 @@ public interface Grid {
      * @param location ロケーション
      * @return セル(Optional)
      */
-    Optional<Cell> getCell(Location location);
+    Optional<Cell> getCell(RectangleLocation location);
 
     /**
      * セルよりロケーションを取得
@@ -26,7 +24,7 @@ public interface Grid {
      * @param cell セル
      * @return ロケーション
      */
-    Location getLocation(Cell cell);
+    RectangleLocation getLocation(Cell cell);
 
     /**
      * 周りのセルのリストを取得

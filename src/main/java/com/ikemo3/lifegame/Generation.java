@@ -2,6 +2,7 @@ package com.ikemo3.lifegame;
 
 import com.ikemo3.lifegame.cell.Cell;
 import com.ikemo3.lifegame.grid.Grid;
+import com.ikemo3.lifegame.grid.RectangleLocation;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,11 +10,11 @@ import java.util.stream.Collectors;
 public final class Generation {
     private final Grid grid;
 
-    public Generation(Grid grid) {
+    Generation(Grid grid) {
         this.grid = grid;
     }
 
-    public Generation next() {
+    Generation next() {
         List<Cell> nextCells = this.grid.stream()
                 .map(cell -> cell.next(grid.aroundCells(cell)))
                 .collect(Collectors.toList());
@@ -24,7 +25,7 @@ public final class Generation {
         return new Generation(nextGrid);
     }
 
-    public boolean isAlive(Location location) {
+    boolean isAlive(RectangleLocation location) {
         return grid.getCell(location)
                 .orElseThrow(() -> new IllegalArgumentException("セルが見つかりませんでした。"))
                 .isAlive();

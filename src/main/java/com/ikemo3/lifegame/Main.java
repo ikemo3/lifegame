@@ -4,20 +4,20 @@ import com.ikemo3.lifegame.cell.AliveCell;
 import com.ikemo3.lifegame.cell.Cell;
 import com.ikemo3.lifegame.cell.DeadCell;
 import com.ikemo3.lifegame.grid.Grid;
-import com.ikemo3.lifegame.grid.SquareGrid;
+import com.ikemo3.lifegame.grid.RectangleGrid;
 
 import java.util.Arrays;
 import java.util.List;
 
 public final class Main {
-    public static final List<Cell> CELLS = Arrays.asList(
+    private static final List<Cell> CELLS = Arrays.asList(
             new DeadCell(), new AliveCell(), new DeadCell(), new DeadCell(),
             new DeadCell(), new AliveCell(), new DeadCell(), new DeadCell(),
             new DeadCell(), new AliveCell(), new DeadCell(), new DeadCell()
     );
 
     public static void main(String[] args) {
-        Grid grid = new SquareGrid(4, 3, CELLS);
+        Grid grid = new RectangleGrid(4, 3, CELLS);
         Generation generation = new Generation(grid);
         System.out.println(generation.toString());
         Generation nextGeneration = generation.next();
