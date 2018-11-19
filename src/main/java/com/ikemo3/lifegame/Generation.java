@@ -6,20 +6,19 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public final class Generation {
-    private final Cell[][] cells;
+    private final Cell[] cells;
 
-    public Generation(Cell[][] cells) {
+    public Generation(Cell[] cells) {
         this.cells = cells;
     }
 
     public Generation next() {
-        Cell[][] nextCells = new Cell[3][3];
+        Cell[] nextCells = new Cell[9];
         for (int x = 0; x <= 2; x++) {
-            nextCells[x] = new Cell[3];
             for (int y = 0; y <= 2; y++) {
-                Cell cell = this.cells[x][y];
+                Cell cell = this.cells[x * 3 + y];
                 List<Cell> aroundCells = aroundCells(cell);
-                nextCells[x][y] = this.cells[x][y].next(aroundCells);
+                nextCells[x * 3 + y] = this.cells[x * 3 + y].next(aroundCells);
             }
         }
 
@@ -56,14 +55,14 @@ public final class Generation {
             return null;
         }
 
-        return this.cells[x][y];
+        return this.cells[x * 3 + y];
     }
 
     public int[] getIndex(Cell cell) {
         for (int x = 0; x <= 2; x++) {
             for (int y = 0; y <= 2; y++) {
                 // オブジェクトそのものを比較するので、==を使うのに注意
-                if (this.cells[x][y] == cell) {
+                if (this.cells[x * 3 + y] == cell) {
                     return new int[]{x, y};
                 }
             }
@@ -73,7 +72,7 @@ public final class Generation {
     }
 
     public boolean isAlive(int x, int y) {
-        return this.cells[x][y].isAlive();
+        return this.cells[x * 3 + y].isAlive();
     }
 
     @Override
@@ -81,7 +80,7 @@ public final class Generation {
         StringBuilder builder = new StringBuilder();
         for (int x = 0; x <= 2; x++) {
             for (int y = 0; y <= 2; y++) {
-                Cell cell = this.cells[x][y];
+                Cell cell = this.cells[x * 3 + y];
                 if (cell.isAlive()) {
                     builder.append("■");
                 } else {

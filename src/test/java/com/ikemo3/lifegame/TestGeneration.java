@@ -5,10 +5,10 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public final class TestGeneration {
-    public static final Cell[][] CELLS = {
-            {new DeadCell(), new AliveCell(), new DeadCell()},
-            {new AliveCell(), new DeadCell(), new DeadCell()},
-            {new AliveCell(), new DeadCell(), new DeadCell()}
+    public static final Cell[] CELLS = {
+            new DeadCell(), new AliveCell(), new DeadCell(),
+            new AliveCell(), new DeadCell(), new DeadCell(),
+            new AliveCell(), new DeadCell(), new DeadCell()
     };
 
     @Test
@@ -24,7 +24,7 @@ public final class TestGeneration {
     public void testAroundCells() {
         Generation generation = new Generation(CELLS);
 
-        assertThat(generation.aroundCells(CELLS[1][1]).size()).isEqualTo(8);
-        assertThat(generation.aroundCells(CELLS[0][0]).size()).isEqualTo(3);
+        assertThat(generation.aroundCells(CELLS[4]).size()).isEqualTo(8);
+        assertThat(generation.aroundCells(CELLS[0]).size()).isEqualTo(3);
     }
 }
