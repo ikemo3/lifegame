@@ -8,14 +8,22 @@ import java.util.Iterator;
 import java.util.List;
 
 public final class Grid implements Iterable<Cell> {
-    private final int row;
+    private final int rowSize;
     private final int columnSize;
     private final List<Cell> cells;
 
-    public Grid(int row, int columnSize, List<Cell> cells) {
-        this.row = row;
+    public Grid(int columnSize, int rowSize, List<Cell> cells) {
         this.columnSize = columnSize;
+        this.rowSize = rowSize;
         this.cells = Collections.unmodifiableList(cells);
+    }
+
+    public int getRowSize() {
+        return rowSize;
+    }
+
+    public int getColumnSize() {
+        return columnSize;
     }
 
     public Cell getCell(int x, int y) {
@@ -23,17 +31,17 @@ public final class Grid implements Iterable<Cell> {
             return null;
         }
 
-        if (y < 0 || y >= row) {
+        if (y < 0 || y >= rowSize) {
             return null;
         }
 
-        return this.cells.get(y * 3 + x);
+        return this.cells.get(y * columnSize + x);
     }
 
     public Location getLocation(Cell cell) {
         int index = this.cells.indexOf(cell);
-        int x = index % 3;
-        int y = index / 3;
+        int x = index % this.columnSize;
+        int y = index / this.columnSize;
 
         return new Location(x, y);
     }

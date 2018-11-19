@@ -9,13 +9,13 @@ import java.util.List;
 
 public final class Main {
     public static final List<Cell> CELLS = Arrays.asList(
-            new DeadCell(), new AliveCell(), new DeadCell(),
-            new DeadCell(), new AliveCell(), new DeadCell(),
-            new DeadCell(), new AliveCell(), new DeadCell()
+            new DeadCell(), new AliveCell(), new DeadCell(), new DeadCell(),
+            new DeadCell(), new AliveCell(), new DeadCell(), new DeadCell(),
+            new DeadCell(), new AliveCell(), new DeadCell(), new DeadCell()
     );
 
     public static void main(String[] args) {
-        Generation generation = new Generation(CELLS);
+        Generation generation = new Generation(CELLS, 4, 3);
         System.out.println(generation.toString());
         Generation nextGeneration = generation.next();
         System.out.println(nextGeneration.toString());

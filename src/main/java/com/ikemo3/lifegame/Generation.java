@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 public final class Generation {
     private final Grid grid;
 
-    public Generation(List<Cell> cells) {
-        this.grid = new Grid(3, 3, cells);
+    public Generation(List<Cell> cells, int columnSize, int rowSize) {
+        this.grid = new Grid(columnSize, rowSize, cells);
     }
 
     public Generation next() {
@@ -21,7 +21,7 @@ public final class Generation {
             nextCells.add(cell.next(aroundCells));
         }
 
-        return new Generation(nextCells);
+        return new Generation(nextCells, grid.getColumnSize(), grid.getRowSize());
     }
 
     public List<Cell> aroundCells(Cell cell) {
