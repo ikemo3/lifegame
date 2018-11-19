@@ -72,8 +72,8 @@ public final class Generation {
         throw new IllegalArgumentException("セルが見つかりませんでした。");
     }
 
-    public boolean isAlive(int i, int j) {
-        return false;
+    public boolean isAlive(int x, int y) {
+        return this.cells[x][y].isAlive();
     }
 
     @Override
