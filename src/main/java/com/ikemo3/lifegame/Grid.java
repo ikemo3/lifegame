@@ -6,6 +6,7 @@ import com.ikemo3.lifegame.cell.Cell;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Stream;
 
 public final class Grid implements Iterable<Cell> {
     private final int rowSize;
@@ -51,6 +52,9 @@ public final class Grid implements Iterable<Cell> {
         return this.cells.iterator();
     }
 
+    public Stream<Cell> stream() {
+        return this.cells.stream();
+    }
 
     @Override
     public String toString() {

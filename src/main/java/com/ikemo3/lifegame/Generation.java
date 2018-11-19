@@ -15,30 +15,24 @@ public final class Generation {
     }
 
     public Generation next() {
-        List<Cell> nextCells = new ArrayList<>();
-        for (Cell cell : this.grid) {
-            List<Cell> aroundCells = aroundCells(cell);
-            nextCells.add(cell.next(aroundCells));
-        }
+        List<Cell> nextCells = this.grid.stream()
+                .map(cell -> cell.next(aroundCells(cell)))
+                .collect(Collectors.toList());
 
         return new Generation(nextCells, grid.getColumnSize(), grid.getRowSize());
     }
 
     public List<Cell> aroundCells(Cell cell) {
-        List<Cell> aroundCells = new ArrayList<>();
-
-        Location loc = this.grid.getLocation(cell);
+        Location location = this.grid.getLocation(cell);
 
         // 周りのセルの位置を取得
-        List<Location> aroundList = loc.aroundList();
+        List<Location> aroundList = location.aroundList();
 
-        // 周りのセルを取得して追加(nullが入る可能性あり)
-        for (Location around : aroundList) {
-            aroundCells.add(this.grid.getCell(around.getX(), around.getY()));
-        }
-
-        // nullを除去して返す
-        return aroundCells.stream().filter(Objects::nonNull).collect(Collectors.toList());
+        // TODO: getX()を使わない
+        return aroundList.stream()
+                .map(around -> this.grid.getCell(around.getX(), around.getY())) // 周りのセルを取得して追加(nullが入る可能性あり)
+                .filter(Objects::nonNull) // nullを除去
+                .collect(Collectors.toList());
     }
 
     public boolean isAlive(int x, int y) {
