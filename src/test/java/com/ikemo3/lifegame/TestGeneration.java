@@ -23,7 +23,7 @@ public final class TestGeneration {
         Generation generation = new Generation(grid);
         Generation nextGeneration = generation.next();
 
-        assertThat(nextGeneration.isAlive(1, 1)).isTrue();
-        assertThat(nextGeneration.isAlive(2, 0)).isFalse();
+        assertThat(nextGeneration.isAlive(new Location(1, 1))).isTrue();
+        assertThat(nextGeneration.isAlive(new Location(2, 0))).isFalse();
     }
 }

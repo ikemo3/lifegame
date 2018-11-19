@@ -11,6 +11,8 @@ import java.util.stream.Stream;
  * 格子
  */
 public interface Grid extends Iterable<Cell> {
+    Optional<Cell> getCell(Location location);
+
     Optional<Cell> getCell(int x, int y);
 
     Location getLocation(Cell cell);

@@ -21,6 +21,12 @@ public final class Generation {
         return new Generation(nextGrid);
     }
 
+    public boolean isAlive(Location location) {
+        return grid.getCell(location)
+                .orElseThrow(() -> new IllegalArgumentException("セルが見つかりませんでした。"))
+                .isAlive();
+    }
+
     public boolean isAlive(int x, int y) {
         return this.grid.getCell(x, y)
                 .orElseThrow(() -> new IllegalArgumentException("セルが見つかりませんでした。"))

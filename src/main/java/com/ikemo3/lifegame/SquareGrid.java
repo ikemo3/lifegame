@@ -25,6 +25,11 @@ public final class SquareGrid implements Grid {
     }
 
     @Override
+    public Optional<Cell> getCell(Location location) {
+        return getCell(location.getX(), location.getY());
+    }
+
+    @Override
     public Optional<Cell> getCell(int x, int y) {
         if (x < 0 || x >= columnSize) {
             return Optional.empty();
