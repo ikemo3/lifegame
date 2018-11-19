@@ -1,5 +1,8 @@
 package com.ikemo3.lifegame;
 
+import com.ikemo3.lifegame.cell.AliveCell;
+import com.ikemo3.lifegame.cell.Cell;
+import com.ikemo3.lifegame.cell.DeadCell;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -14,7 +17,7 @@ public final class TestGeneration {
 
     @Test
     public void testNextGeneration() {
-        Generation generation = new Generation(CELLS);
+        Generation generation = new Generation(CELLS, 3, 3);
         Generation nextGeneration = generation.next();
 
         assertThat(nextGeneration.isAlive(1, 1)).isTrue();
@@ -23,7 +26,7 @@ public final class TestGeneration {
 
     @Test
     public void testAroundCells() {
-        Generation generation = new Generation(CELLS);
+        Generation generation = new Generation(CELLS, 3, 3);
 
         assertThat(generation.aroundCells(CELLS.get(4)).size()).isEqualTo(8);
         assertThat(generation.aroundCells(CELLS.get(0)).size()).isEqualTo(3);

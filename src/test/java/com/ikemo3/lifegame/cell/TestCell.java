@@ -1,4 +1,4 @@
-package com.ikemo3.lifegame;
+package com.ikemo3.lifegame.cell;
 
 import org.junit.Test;
 
