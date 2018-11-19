@@ -1,28 +1,25 @@
 package com.ikemo3.lifegame;
 
-import com.ikemo3.lifegame.cell.AliveCell;
-import com.ikemo3.lifegame.cell.Cell;
-import com.ikemo3.lifegame.cell.DeadCell;
-import com.ikemo3.lifegame.grid.Grid;
-import com.ikemo3.lifegame.grid.RectangleGrid;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-import java.util.Arrays;
-import java.util.List;
+import java.net.URL;
 
-public final class Main {
-    private static final List<Cell> CELLS = Arrays.asList(
-            new DeadCell(), new AliveCell(), new DeadCell(), new DeadCell(),
-            new DeadCell(), new AliveCell(), new DeadCell(), new DeadCell(),
-            new DeadCell(), new AliveCell(), new DeadCell(), new DeadCell()
-    );
-
+public final class Main extends Application {
     public static void main(String[] args) {
-        Grid grid = new RectangleGrid(4, 3, CELLS);
-        Generation generation = new Generation(grid);
-        System.out.println(generation.toString());
-        Generation nextGeneration = generation.next();
-        System.out.println(nextGeneration.toString());
-        Generation nextGeneration2 = nextGeneration.next();
-        System.out.println(nextGeneration2.toString());
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        URL resource = getClass().getResource("Main.fxml");
+        Parent root = FXMLLoader.load(resource);
+        primaryStage.setTitle("LifeGame");
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }
