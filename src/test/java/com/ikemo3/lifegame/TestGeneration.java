@@ -19,7 +19,8 @@ public final class TestGeneration {
 
     @Test
     public void testNextGeneration() {
-        Generation generation = new Generation(CELLS, 3, 3);
+        Grid grid = new SquareGrid(3, 3, CELLS);
+        Generation generation = new Generation(grid);
         Generation nextGeneration = generation.next();
 
         assertThat(nextGeneration.isAlive(1, 1)).isTrue();

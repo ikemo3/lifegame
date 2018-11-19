@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+/**
+ * 格子
+ */
 public interface Grid extends Iterable<Cell> {
     int getRowSize();
 

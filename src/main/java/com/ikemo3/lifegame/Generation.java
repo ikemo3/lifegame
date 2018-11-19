@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 public final class Generation {
     private final Grid grid;
 
-    public Generation(List<Cell> cells, int columnSize, int rowSize) {
-        this.grid = new SquareGrid(columnSize, rowSize, cells);
+    public Generation(Grid grid) {
+        this.grid = grid;
     }
 
     public Generation next() {
@@ -17,7 +17,8 @@ public final class Generation {
                 .map(cell -> cell.next(grid.aroundCells(cell)))
                 .collect(Collectors.toList());
 
-        return new Generation(nextCells, grid.getColumnSize(), grid.getRowSize());
+        Grid nextGrid = new SquareGrid(this.grid.getColumnSize(), grid.getRowSize(), nextCells);
+        return new Generation(nextGrid);
     }
 
     public boolean isAlive(int x, int y) {

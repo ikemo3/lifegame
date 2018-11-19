@@ -10,6 +10,9 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * 正方形の格子
+ */
 public final class SquareGrid implements Grid {
     private final int rowSize;
     private final int columnSize;

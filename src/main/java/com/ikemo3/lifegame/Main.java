@@ -15,7 +15,8 @@ public final class Main {
     );
 
     public static void main(String[] args) {
-        Generation generation = new Generation(CELLS, 4, 3);
+        Grid grid = new SquareGrid(4, 3, CELLS);
+        Generation generation = new Generation(grid);
         System.out.println(generation.toString());
         Generation nextGeneration = generation.next();
         System.out.println(nextGeneration.toString());
