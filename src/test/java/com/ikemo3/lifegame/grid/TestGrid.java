@@ -1,4 +1,4 @@
-package com.ikemo3.lifegame;
+package com.ikemo3.lifegame.grid;
 
 import com.ikemo3.lifegame.cell.AliveCell;
 import com.ikemo3.lifegame.cell.Cell;

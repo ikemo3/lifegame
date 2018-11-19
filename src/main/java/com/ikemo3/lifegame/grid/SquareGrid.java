@@ -1,10 +1,10 @@
-package com.ikemo3.lifegame;
+package com.ikemo3.lifegame.grid;
 
 import com.google.common.collect.Lists;
+import com.ikemo3.lifegame.Location;
 import com.ikemo3.lifegame.cell.Cell;
 
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -55,17 +55,10 @@ public final class SquareGrid implements Grid {
         // 周りのセルの位置を取得
         List<Location> aroundList = location.aroundList();
 
-        // TODO: getX()を使わない
         return aroundList.stream()
                 .map(this::getCell) // 周りのセルを取得して追加(nullが入る可能性あり)
-                .filter(Optional::isPresent) // nullを除去
-                .map(Optional::get)
+                .filter(Optional::isPresent).map(Optional::get)  // nullを除去して値を取得
                 .collect(Collectors.toList());
-    }
-
-    @Override
-    public Iterator<Cell> iterator() {
-        return this.cells.iterator();
     }
 
     @Override

@@ -3,6 +3,8 @@ package com.ikemo3.lifegame;
 import com.ikemo3.lifegame.cell.AliveCell;
 import com.ikemo3.lifegame.cell.Cell;
 import com.ikemo3.lifegame.cell.DeadCell;
+import com.ikemo3.lifegame.grid.Grid;
+import com.ikemo3.lifegame.grid.SquareGrid;
 
 import java.util.Arrays;
 import java.util.List;

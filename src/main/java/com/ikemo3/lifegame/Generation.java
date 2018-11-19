@@ -1,6 +1,7 @@
 package com.ikemo3.lifegame;
 
 import com.ikemo3.lifegame.cell.Cell;
+import com.ikemo3.lifegame.grid.Grid;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,7 +18,9 @@ public final class Generation {
                 .map(cell -> cell.next(grid.aroundCells(cell)))
                 .collect(Collectors.toList());
 
+        // 次の世代のGridを作成して返す
         Grid nextGrid = grid.withNextCells(nextCells);
+
         return new Generation(nextGrid);
     }
 
