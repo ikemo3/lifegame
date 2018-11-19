@@ -25,16 +25,6 @@ public final class SquareGrid implements Grid {
     }
 
     @Override
-    public int getRowSize() {
-        return rowSize;
-    }
-
-    @Override
-    public int getColumnSize() {
-        return columnSize;
-    }
-
-    @Override
     public Optional<Cell> getCell(int x, int y) {
         if (x < 0 || x >= columnSize) {
             return Optional.empty();
@@ -79,6 +69,11 @@ public final class SquareGrid implements Grid {
     @Override
     public Stream<Cell> stream() {
         return this.cells.stream();
+    }
+
+    @Override
+    public Grid withNextCells(List<Cell> nextCells) {
+        return new SquareGrid(this.columnSize, this.rowSize, nextCells);
     }
 
     @Override

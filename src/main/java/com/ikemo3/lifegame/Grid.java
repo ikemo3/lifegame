@@ -11,10 +11,6 @@ import java.util.stream.Stream;
  * 格子
  */
 public interface Grid extends Iterable<Cell> {
-    int getRowSize();
-
-    int getColumnSize();
-
     Optional<Cell> getCell(int x, int y);
 
     Location getLocation(Cell cell);
@@ -25,4 +21,6 @@ public interface Grid extends Iterable<Cell> {
     Iterator<Cell> iterator();
 
     Stream<Cell> stream();
+
+    Grid withNextCells(List<Cell> cells);
 }

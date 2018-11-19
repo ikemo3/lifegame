@@ -17,7 +17,7 @@ public final class Generation {
                 .map(cell -> cell.next(grid.aroundCells(cell)))
                 .collect(Collectors.toList());
 
-        Grid nextGrid = new SquareGrid(this.grid.getColumnSize(), grid.getRowSize(), nextCells);
+        Grid nextGrid = grid.withNextCells(nextCells);
         return new Generation(nextGrid);
     }
 
