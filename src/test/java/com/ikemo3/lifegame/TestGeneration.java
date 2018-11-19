@@ -2,14 +2,15 @@ package com.ikemo3.lifegame;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public final class TestGeneration {
-    public static final Cell[][] CELLS = {
-            {new DeadCell(), new AliveCell(), new DeadCell()},
-            {new AliveCell(), new DeadCell(), new DeadCell()},
-            {new AliveCell(), new DeadCell(), new DeadCell()}
-    };
+    public static final List<Cell> CELLS = Arrays.asList(new DeadCell(), new AliveCell(), new DeadCell(),
+            new AliveCell(), new DeadCell(), new DeadCell(),
+            new AliveCell(), new DeadCell(), new DeadCell());
 
     @Test
     public void testNextGeneration() {
@@ -24,7 +25,7 @@ public final class TestGeneration {
     public void testAroundCells() {
         Generation generation = new Generation(CELLS);
 
-        assertThat(generation.aroundCells(CELLS[1][1]).size()).isEqualTo(8);
-        assertThat(generation.aroundCells(CELLS[0][0]).size()).isEqualTo(3);
+        assertThat(generation.aroundCells(CELLS.get(4)).size()).isEqualTo(8);
+        assertThat(generation.aroundCells(CELLS.get(0)).size()).isEqualTo(3);
     }
 }
