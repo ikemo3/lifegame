@@ -61,4 +61,16 @@ public final class TestCell {
         Cell nextCell = deadCell.next(aroundCell);
         assertThat(nextCell.isAlive()).isFalse();
     }
+
+    @Test
+    public void testDeadToString() {
+        Cell cell = new DeadCell();
+        assertThat(cell.toString()).isEqualTo("□");
+    }
+
+    @Test
+    public void testAliveToString() {
+        Cell cell = new AliveCell();
+        assertThat(cell.toString()).isEqualTo("■");
+    }
 }
