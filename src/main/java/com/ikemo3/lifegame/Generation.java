@@ -2,9 +2,8 @@ package com.ikemo3.lifegame;
 
 import com.ikemo3.lifegame.cell.Cell;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public final class Generation {
@@ -31,17 +30,15 @@ public final class Generation {
         // TODO: getX()を使わない
         return aroundList.stream()
                 .map(around -> this.grid.getCell(around.getX(), around.getY())) // 周りのセルを取得して追加(nullが入る可能性あり)
-                .filter(Objects::nonNull) // nullを除去
+                .filter(Optional::isPresent) // nullを除去
+                .map(Optional::get)
                 .collect(Collectors.toList());
     }
 
     public boolean isAlive(int x, int y) {
-        Cell cell = this.grid.getCell(x, y);
-        if (cell == null) {
-            throw new IllegalArgumentException("セルが見つかりませんでした。");
-        }
-
-        return cell.isAlive();
+        return this.grid.getCell(x, y)
+                .orElseThrow(() -> new IllegalArgumentException("セルが見つかりませんでした。"))
+                .isAlive();
     }
 
     @Override

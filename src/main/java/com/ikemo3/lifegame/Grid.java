@@ -6,6 +6,7 @@ import com.ikemo3.lifegame.cell.Cell;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public final class Grid implements Iterable<Cell> {
@@ -27,16 +28,16 @@ public final class Grid implements Iterable<Cell> {
         return columnSize;
     }
 
-    public Cell getCell(int x, int y) {
+    public Optional<Cell> getCell(int x, int y) {
         if (x < 0 || x >= columnSize) {
-            return null;
+            return Optional.empty();
         }
 
         if (y < 0 || y >= rowSize) {
-            return null;
+            return Optional.empty();
         }
 
-        return this.cells.get(y * columnSize + x);
+        return Optional.of(this.cells.get(y * columnSize + x));
     }
 
     public Location getLocation(Cell cell) {
