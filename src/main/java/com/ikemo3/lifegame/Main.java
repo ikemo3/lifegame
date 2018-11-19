@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public final class Main {
-    public static final List<Cell> CELLS = Arrays.asList(
+    private static final List<Cell> CELLS = Arrays.asList(
             new DeadCell(), new AliveCell(), new DeadCell(), new DeadCell(),
             new DeadCell(), new AliveCell(), new DeadCell(), new DeadCell(),
             new DeadCell(), new AliveCell(), new DeadCell(), new DeadCell()

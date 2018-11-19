@@ -9,11 +9,11 @@ import java.util.stream.Collectors;
 public final class Generation {
     private final Grid grid;
 
-    public Generation(Grid grid) {
+    Generation(Grid grid) {
         this.grid = grid;
     }
 
-    public Generation next() {
+    Generation next() {
         List<Cell> nextCells = this.grid.stream()
                 .map(cell -> cell.next(grid.aroundCells(cell)))
                 .collect(Collectors.toList());
@@ -24,7 +24,7 @@ public final class Generation {
         return new Generation(nextGrid);
     }
 
-    public boolean isAlive(Location location) {
+    boolean isAlive(Location location) {
         return grid.getCell(location)
                 .orElseThrow(() -> new IllegalArgumentException("セルが見つかりませんでした。"))
                 .isAlive();

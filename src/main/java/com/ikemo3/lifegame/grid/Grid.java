@@ -3,7 +3,6 @@ package com.ikemo3.lifegame.grid;
 import com.ikemo3.lifegame.Location;
 import com.ikemo3.lifegame.cell.Cell;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
