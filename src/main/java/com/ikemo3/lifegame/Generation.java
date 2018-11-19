@@ -61,14 +61,7 @@ public final class Generation {
     }
 
     public int getIndex(Cell cell) {
-        for (int i = 0; i < CELL_COUNT; i++) {
-            // オブジェクトそのものを比較するので、==を使うのに注意
-            if (this.cells.get(i) == cell) {
-                return i;
-            }
-        }
-
-        throw new IllegalArgumentException("セルが見つかりませんでした。");
+        return this.cells.indexOf(cell);
     }
 
     public boolean isAlive(int x, int y) {
