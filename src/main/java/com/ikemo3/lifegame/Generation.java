@@ -27,12 +27,6 @@ public final class Generation {
                 .isAlive();
     }
 
-    public boolean isAlive(int x, int y) {
-        return this.grid.getCell(x, y)
-                .orElseThrow(() -> new IllegalArgumentException("セルが見つかりませんでした。"))
-                .isAlive();
-    }
-
     @Override
     public String toString() {
         return this.grid.toString();

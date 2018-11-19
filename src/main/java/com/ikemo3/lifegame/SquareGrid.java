@@ -26,11 +26,8 @@ public final class SquareGrid implements Grid {
 
     @Override
     public Optional<Cell> getCell(Location location) {
-        return getCell(location.getX(), location.getY());
-    }
-
-    @Override
-    public Optional<Cell> getCell(int x, int y) {
+        int x = location.getX();
+        int y = location.getY();
         if (x < 0 || x >= columnSize) {
             return Optional.empty();
         }
@@ -60,7 +57,7 @@ public final class SquareGrid implements Grid {
 
         // TODO: getX()を使わない
         return aroundList.stream()
-                .map(around -> this.getCell(around.getX(), around.getY())) // 周りのセルを取得して追加(nullが入る可能性あり)
+                .map(this::getCell) // 周りのセルを取得して追加(nullが入る可能性あり)
                 .filter(Optional::isPresent) // nullを除去
                 .map(Optional::get)
                 .collect(Collectors.toList());

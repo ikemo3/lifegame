@@ -13,8 +13,6 @@ import java.util.stream.Stream;
 public interface Grid extends Iterable<Cell> {
     Optional<Cell> getCell(Location location);
 
-    Optional<Cell> getCell(int x, int y);
-
     Location getLocation(Cell cell);
 
     List<Cell> aroundCells(Cell cell);
