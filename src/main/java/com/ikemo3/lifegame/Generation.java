@@ -2,7 +2,7 @@ package com.ikemo3.lifegame;
 
 import com.ikemo3.lifegame.cell.Cell;
 import com.ikemo3.lifegame.grid.Grid;
-import com.ikemo3.lifegame.grid.SquareLocation;
+import com.ikemo3.lifegame.grid.RectangleLocation;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,7 +25,7 @@ public final class Generation {
         return new Generation(nextGrid);
     }
 
-    boolean isAlive(SquareLocation location) {
+    boolean isAlive(RectangleLocation location) {
         return grid.getCell(location)
                 .orElseThrow(() -> new IllegalArgumentException("セルが見つかりませんでした。"))
                 .isAlive();
