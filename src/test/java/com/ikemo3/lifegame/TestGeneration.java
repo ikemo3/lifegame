@@ -4,6 +4,7 @@ import com.ikemo3.lifegame.cell.AliveCell;
 import com.ikemo3.lifegame.cell.Cell;
 import com.ikemo3.lifegame.cell.DeadCell;
 import com.ikemo3.lifegame.grid.Grid;
+import com.ikemo3.lifegame.grid.SquareLocation;
 import com.ikemo3.lifegame.grid.SquareGrid;
 import org.junit.Test;
 
@@ -25,7 +26,7 @@ public final class TestGeneration {
         Generation generation = new Generation(grid);
         Generation nextGeneration = generation.next();
 
-        assertThat(nextGeneration.isAlive(new Location(1, 1))).isTrue();
-        assertThat(nextGeneration.isAlive(new Location(2, 0))).isFalse();
+        assertThat(nextGeneration.isAlive(new SquareLocation(1, 1))).isTrue();
+        assertThat(nextGeneration.isAlive(new SquareLocation(2, 0))).isFalse();
     }
 }

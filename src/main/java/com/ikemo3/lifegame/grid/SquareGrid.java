@@ -1,7 +1,6 @@
 package com.ikemo3.lifegame.grid;
 
 import com.google.common.collect.Lists;
-import com.ikemo3.lifegame.Location;
 import com.ikemo3.lifegame.cell.Cell;
 
 import java.util.Collections;
@@ -25,7 +24,7 @@ public final class SquareGrid implements Grid {
     }
 
     @Override
-    public Optional<Cell> getCell(Location location) {
+    public Optional<Cell> getCell(SquareLocation location) {
         int x = location.getX();
         int y = location.getY();
         if (x < 0 || x >= columnSize) {
@@ -40,20 +39,20 @@ public final class SquareGrid implements Grid {
     }
 
     @Override
-    public Location getLocation(Cell cell) {
+    public SquareLocation getLocation(Cell cell) {
         int index = this.cells.indexOf(cell);
         int x = index % this.columnSize;
         int y = index / this.columnSize;
 
-        return new Location(x, y);
+        return new SquareLocation(x, y);
     }
 
     @Override
     public List<Cell> aroundCells(Cell cell) {
-        Location location = this.getLocation(cell);
+        SquareLocation location = this.getLocation(cell);
 
         // 周りのセルの位置を取得
-        List<Location> aroundList = location.aroundList();
+        List<SquareLocation> aroundList = location.aroundList();
 
         return aroundList.stream()
                 .map(this::getCell) // 周りのセルを取得して追加(nullが入る可能性あり)
