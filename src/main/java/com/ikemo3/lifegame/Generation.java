@@ -1,5 +1,7 @@
 package com.ikemo3.lifegame;
 
+import com.google.common.collect.Lists;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -7,7 +9,6 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public final class Generation {
-    private static final int CELL_COUNT = 9;
     private static final int COL_COUNT = 3;
     private static final int ROW_COUNT = 3;
     private final List<Cell> cells;
@@ -18,10 +19,9 @@ public final class Generation {
 
     public Generation next() {
         List<Cell> nextCells = new ArrayList<>();
-        for (int i = 0; i < CELL_COUNT; i++) {
-            Cell cell = this.cells.get(i);
+        for (Cell cell : this.cells) {
             List<Cell> aroundCells = aroundCells(cell);
-            nextCells.add(this.cells.get(i).next(aroundCells));
+            nextCells.add(cell.next(aroundCells));
         }
 
         return new Generation(nextCells);
@@ -76,9 +76,9 @@ public final class Generation {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        for (int x = 0; x <= 2; x++) {
-            for (int y = 0; y <= 2; y++) {
-                Cell cell = this.cells.get(x * 3 + y);
+        List<List<Cell>> parted = Lists.partition(this.cells, 3);
+        for (List<Cell> row : parted) {
+            for (Cell cell : row) {
                 if (cell.isAlive()) {
                     builder.append("■");
                 } else {
