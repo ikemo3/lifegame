@@ -1,7 +1,6 @@
 package com.ikemo3.lifegame;
 
 import com.ikemo3.lifegame.cell.AliveCell;
-import com.ikemo3.lifegame.cell.Cell;
 import com.ikemo3.lifegame.cell.Cells;
 import com.ikemo3.lifegame.cell.DeadCell;
 import com.ikemo3.lifegame.grid.Grid;
@@ -12,8 +11,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public final class LifeGame implements Initializable {
