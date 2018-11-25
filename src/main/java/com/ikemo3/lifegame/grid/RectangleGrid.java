@@ -6,7 +6,6 @@ import com.ikemo3.lifegame.cell.Cells;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * 正方形の格子
@@ -62,12 +61,9 @@ public final class RectangleGrid implements Grid {
     }
 
     @Override
-    public Stream<Cell> stream() {
-        return this.cells.stream();
-    }
+    public Grid next() {
+        Cells nextCells = this.cells.map(cell -> cell.next(aroundCells(cell)));
 
-    @Override
-    public Grid withNextCells(Cells nextCells) {
         return new RectangleGrid(this.columnSize, this.rowSize, nextCells);
     }
 

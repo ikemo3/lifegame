@@ -1,12 +1,7 @@
 package com.ikemo3.lifegame;
 
-import com.ikemo3.lifegame.cell.Cell;
-import com.ikemo3.lifegame.cell.Cells;
 import com.ikemo3.lifegame.grid.Grid;
 import com.ikemo3.lifegame.grid.RectangleLocation;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public final class Generation {
     private final Grid grid;
@@ -16,12 +11,8 @@ public final class Generation {
     }
 
     Generation next() {
-        List<Cell> nextCells = this.grid.stream()
-                .map(cell -> cell.next(grid.aroundCells(cell)))
-                .collect(Collectors.toList());
-
-        // 次の世代のGridを作成して返す
-        Grid nextGrid = grid.withNextCells(Cells.of(nextCells));
+        // 次の世代のGridを作成
+        Grid nextGrid = this.grid.next();
 
         return new Generation(nextGrid);
     }

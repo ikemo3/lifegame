@@ -4,7 +4,6 @@ import com.ikemo3.lifegame.cell.Cell;
 import com.ikemo3.lifegame.cell.Cells;
 
 import java.util.Optional;
-import java.util.stream.Stream;
 
 /**
  * 格子
@@ -27,7 +26,7 @@ public interface Grid {
     RectangleLocation getLocation(Cell cell);
 
     /**
-     * 周りのセルのリストを取得
+     * 周りのセル群を取得
      *
      * @param cell セル
      * @return 周りのセル群
@@ -35,17 +34,9 @@ public interface Grid {
     Cells aroundCells(Cell cell);
 
     /**
-     * セルのストリームを返す
+     * 次の世代のGridを返す
      *
-     * @return セルのストリーム
+     * @return 次の世代のGrid
      */
-    Stream<Cell> stream();
-
-    /**
-     * 次の世代のセルのリストより、新しいGridオブジェクトを作成
-     *
-     * @param nextCells 次の世代のセルのリスト
-     * @return 新しいGridオブジェクト
-     */
-    Grid withNextCells(Cells nextCells);
+    Grid next();
 }

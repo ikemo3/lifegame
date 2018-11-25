@@ -5,7 +5,8 @@ import com.google.common.collect.Lists;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public final class Cells {
     private final List<Cell> cells;
@@ -38,8 +39,12 @@ public final class Cells {
         return this.cells.indexOf(cell);
     }
 
-    public Stream<Cell> stream() {
-        return this.cells.stream();
+    public Cells map(Function<Cell, Cell> mapper) {
+        List<Cell> nextCells = this.cells.stream()
+                .map(mapper)
+                .collect(Collectors.toList());
+
+        return Cells.of(nextCells);
     }
 
     public List<List<Cell>> parted(int columnSize) {
