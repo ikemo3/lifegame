@@ -22,9 +22,11 @@ public final class RectangleGrid implements Grid {
     }
 
     @Override
-    public Optional<Cell> getCell(RectangleLocation location) {
-        int x = location.getX();
-        int y = location.getY();
+    public Optional<Cell> getCell(Location location) {
+        // TODO: キャストをやめたい
+        RectangleLocation rectangleLocation = (RectangleLocation) location;
+        int x = rectangleLocation.getX();
+        int y = rectangleLocation.getY();
         if (x < 0 || x >= columnSize) {
             return Optional.empty();
         }
@@ -50,7 +52,7 @@ public final class RectangleGrid implements Grid {
         RectangleLocation location = this.getLocation(cell);
 
         // 周りのセルの位置を取得
-        List<RectangleLocation> aroundList = location.aroundList();
+        List<Location> aroundList = location.aroundList();
 
         List<Cell> aroundCells = aroundList.stream()
                 .map(this::getCell) // 周りのセルを取得して追加(nullが入る可能性あり)

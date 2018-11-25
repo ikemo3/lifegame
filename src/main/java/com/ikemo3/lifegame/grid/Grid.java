@@ -15,7 +15,7 @@ public interface Grid {
      * @param location ロケーション
      * @return セル(Optional)
      */
-    Optional<Cell> getCell(RectangleLocation location);
+    Optional<Cell> getCell(Location location);
 
     /**
      * セルよりロケーションを取得
@@ -23,7 +23,7 @@ public interface Grid {
      * @param cell セル
      * @return ロケーション
      */
-    RectangleLocation getLocation(Cell cell);
+    Location getLocation(Cell cell);
 
     /**
      * 周りのセル群を取得

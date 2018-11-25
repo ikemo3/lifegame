@@ -1,5 +1,6 @@
 package com.ikemo3.lifegame;
 
+import com.ikemo3.lifegame.grid.Location;
 import com.ikemo3.lifegame.grid.RectangleLocation;
 import org.junit.Test;
 
@@ -11,7 +12,7 @@ public final class TestLocation {
     @Test
     public void testAroundList() {
         RectangleLocation loc = new RectangleLocation(1, 1);
-        List<RectangleLocation> aroundList = loc.aroundList();
+        List<Location> aroundList = loc.aroundList();
         assertThat(aroundList).hasSize(8);
     }
 }
