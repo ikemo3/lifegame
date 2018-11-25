@@ -1,14 +1,12 @@
 package com.ikemo3.lifegame.cell;
 
-import java.util.List;
-
 /**
  * 生きているセル
  */
 public final class AliveCell implements Cell {
     @Override
-    public Cell next(List<Cell> aroundCell) {
-        long countAlive = aroundCell.stream().filter(Cell::isAlive).count();
+    public Cell next(Cells aroundCells) {
+        long countAlive = aroundCells.countAlive();
 
         if (countAlive == 2 || countAlive == 3) {
             return new AliveCell();

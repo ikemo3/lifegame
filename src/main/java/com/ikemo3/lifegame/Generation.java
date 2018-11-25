@@ -1,6 +1,7 @@
 package com.ikemo3.lifegame;
 
 import com.ikemo3.lifegame.cell.Cell;
+import com.ikemo3.lifegame.cell.Cells;
 import com.ikemo3.lifegame.grid.Grid;
 import com.ikemo3.lifegame.grid.RectangleLocation;
 
@@ -20,7 +21,7 @@ public final class Generation {
                 .collect(Collectors.toList());
 
         // 次の世代のGridを作成して返す
-        Grid nextGrid = grid.withNextCells(nextCells);
+        Grid nextGrid = grid.withNextCells(Cells.of(nextCells));
 
         return new Generation(nextGrid);
     }

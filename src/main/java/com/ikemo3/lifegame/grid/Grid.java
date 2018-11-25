@@ -1,8 +1,8 @@
 package com.ikemo3.lifegame.grid;
 
 import com.ikemo3.lifegame.cell.Cell;
+import com.ikemo3.lifegame.cell.Cells;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -30,9 +30,9 @@ public interface Grid {
      * 周りのセルのリストを取得
      *
      * @param cell セル
-     * @return 周りのセルのリスト
+     * @return 周りのセル群
      */
-    List<Cell> aroundCells(Cell cell);
+    Cells aroundCells(Cell cell);
 
     /**
      * セルのストリームを返す
@@ -47,5 +47,5 @@ public interface Grid {
      * @param nextCells 次の世代のセルのリスト
      * @return 新しいGridオブジェクト
      */
-    Grid withNextCells(List<Cell> nextCells);
+    Grid withNextCells(Cells nextCells);
 }
