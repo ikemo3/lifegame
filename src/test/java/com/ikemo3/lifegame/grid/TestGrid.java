@@ -1,17 +1,14 @@
 package com.ikemo3.lifegame.grid;
 
 import com.ikemo3.lifegame.cell.AliveCell;
-import com.ikemo3.lifegame.cell.Cell;
+import com.ikemo3.lifegame.cell.Cells;
 import com.ikemo3.lifegame.cell.DeadCell;
 import org.junit.Test;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public final class TestGrid {
-    private static final List<Cell> CELLS = Arrays.asList(
+    private static final Cells CELLS = Cells.of(
             new DeadCell(), new AliveCell(), new DeadCell(),
             new AliveCell(), new DeadCell(), new DeadCell(),
             new AliveCell(), new DeadCell(), new DeadCell()

@@ -1,15 +1,13 @@
 package com.ikemo3.lifegame.cell;
 
-import java.util.List;
-
 public interface Cell {
     /**
      * 次の世代のセルを返す
      *
-     * @param aroundCell 周りのセルのリスト
+     * @param aroundCells 周りのセル群
      * @return 次の世代のセル
      */
-    Cell next(List<Cell> aroundCell);
+    Cell next(Cells aroundCells);
 
     /**
      * 生きているかどうかを返す

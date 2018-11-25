@@ -3,7 +3,7 @@ package com.ikemo3.lifegame.grid;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class RectangleLocation {
+public final class RectangleLocation implements Location {
     private final int x;
     private final int y;
 
@@ -12,8 +12,9 @@ public final class RectangleLocation {
         this.y = y;
     }
 
-    public List<RectangleLocation> aroundList() {
-        List<RectangleLocation> aroundList = new ArrayList<>();
+    @Override
+    public List<Location> aroundList() {
+        List<Location> aroundList = new ArrayList<>();
         aroundList.add(new RectangleLocation(x - 1, y - 1));
         aroundList.add(new RectangleLocation(x, y - 1));
         aroundList.add(new RectangleLocation(x + 1, y - 1));
